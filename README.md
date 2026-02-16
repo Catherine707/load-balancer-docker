@@ -52,7 +52,7 @@ Refrescar varias veces para ver cómo alterna entre servidores.
 
 ![Diagrama] (diagrama.png)
 
-El usuario env'ia solicitudes al Load Balancer,
+El usuario envia solicitudes al Load Balancer,
 y este distribuye entre los servidores web.
 
 ---
