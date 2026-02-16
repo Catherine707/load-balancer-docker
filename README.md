@@ -1,70 +1,106 @@
 # Balanceador de Carga con Docker y Nginx
 
-## Descripción
-En esta actividad se implementó un balanceador de carga usando Nginx con el algoritmo Round Robin, distribuyendo solicitudes entre dos servidores web creados con Docker.
+## Descripcion
+
+En esta actividad se implementó un balanceador de carga utilizando Nginx y Docker, aplicando el algoritmo Round Robin para distribuir solicitudes entre dos servidores web.
+
+Cada servidor muestra un mensaje distinto para identificar cuál responde la solicitud.
+
+Server1 muestra: Hola mundo desde server 1  
+Server2 muestra: Hola mundo desde server 2
 
 ---
 
 ## Infraestructura
 
-Cliente → Nginx (Load Balancer) → Server1  
-                                        → Server2  
+Cliente → Load Balancer (Nginx) → Server1  
+                                 → Server2  
 
-Server1 muestra:
-Hola mundo desde server 1
-
-Server2 muestra:
-Hola mundo desde server 2
+El balanceador recibe todas las peticiones y las distribuye entre los servidores.
 
 ---
 
-## Cómo ejecutar
+## Diagrama de Infraestructura
 
-1. Clonar repositorio
+![Diagrama](diagrama.png)
+
+---
+
+## Requisitos
+
+Tener instalado Docker y Docker Compose en Ubuntu.
+
+---
+
+## Como ejecutar la infraestructura
+
+1. Clonar el repositorio
+
 git clone https://github.com/Catherine707/load-balancer-docker.git
 
-2. Entrar a carpeta
+2. Entrar a la carpeta
+
 cd load-balancer-docker
 
-3. Levantar infraestructura
+3. Levantar los contenedores
+
 docker compose up -d
 
----
-
-##  URL del balanceador
+4. Abrir en el navegador
 
 http://localhost:8080
 
-Refrescar varias veces para ver cómo alterna entre servidores.
+Refrescar varias veces para ver cómo cambia entre Server1 y Server2.
 
 ---
 
-##  Tecnologías usadas
+## Como detener la infraestructura
 
-- Docker
-- Docker Compose
-- Nginx
-- HTML
+docker compose down
+
+---
+
+## Tecnologias utilizadas
+
+Docker  
+Docker Compose  
+Nginx  
+HTML  
 
 ---
 
 ## Arquitectura del sistema
 
-![Diagrama] (diagrama.png)
+Se utilizaron tres contenedores:
 
-El usuario envia solicitudes al Load Balancer,
-y este distribuye entre los servidores web.
+- server1: servidor web con HTML simple  
+- server2: servidor web con HTML simple  
+- loadbalancer: Nginx configurado como proxy reverso  
 
----
-
----
-
-##  Algoritmo usado
-
-Se utilizó Round Robin para distribuir las solicitudes entre server1 y server2.
+Nginx usa el algoritmo Round Robin por defecto para alternar solicitudes.
 
 ---
 
-##  Autor
+## Algoritmo de Balanceo
+
+Se utilizó Round Robin, que distribuye las solicitudes de manera equitativa entre server1 y server2.
+
+Ejemplo de funcionamiento:
+
+Peticion 1 → Server1  
+Peticion 2 → Server2  
+Peticion 3 → Server1  
+Peticion 4 → Server2  
+
+---
+
+## Evidencia de funcionamiento
+
+Al refrescar el navegador en http://localhost:8080 se alterna entre los mensajes de cada servidor.
+
+---
+
+## Autor
 
 Catherine Cotí
+
