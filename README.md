@@ -48,6 +48,17 @@ Refrescar varias veces para ver cómo alterna entre servidores.
 
 ---
 
+## Arquitectura del sistema
+
+![Diagrama] (diagrama.png)
+
+El usuario env'ia solicitudes al Load Balancer,
+y este distribuye entre los servidores web.
+
+---
+
+---
+
 ##  Algoritmo usado
 
 Se utilizó Round Robin para distribuir las solicitudes entre server1 y server2.
